@@ -1,0 +1,16 @@
+# Change with the Node.js version of your choice
+ARG NODE_VERSION='18.12.1'
+
+# Change with the Linux Alpine version of your choice
+ARG ALPINE_VERSION='3.17'
+
+# Install OpenSSL 1.1.x, needed for Linux Alpine 3.17+
+ARG RUNTIME_PACKAGES='openssl1.1-compat'
+
+FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS base
+
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache ${RUNTIME_PACKAGES}
+
+WORKDIR /app
