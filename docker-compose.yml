@@ -25,7 +25,7 @@ services:
       - .:/app
     ports:
       - $APP_PORT:3000
-      - $PRISMA_PORT:5555
+      - $PRISMA_STUDIO_PORT:5555
     environment:
       - NODE_ENV=development
     tty: true
